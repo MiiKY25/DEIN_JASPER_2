@@ -11,7 +11,6 @@ public class InformeApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/informe.fxml"));
-        //FXMLLoader fxmlLoader = new FXMLLoader(InformeApplication.class.getResource("fxml/informe.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Informes");
         stage.setScene(scene);
