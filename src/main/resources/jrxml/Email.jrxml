@@ -12,11 +12,11 @@ WHERE e.dni = $P{dni}]]></query>
 		<property name="com.jaspersoft.studio.field.tree.path" value="email"/>
 	</field>
 	<background splitType="Stretch"/>
-	<columnHeader height="52" splitType="Stretch">
-		<element kind="rectangle" uuid="a5fe3601-e388-4642-8eef-52bb89fa7d69" x="-20" y="12" width="160" height="40" backcolor="#E8E8E8">
+	<columnHeader height="40" splitType="Stretch">
+		<element kind="rectangle" uuid="a5fe3601-e388-4642-8eef-52bb89fa7d69" x="-20" y="0" width="160" height="40" backcolor="#E8E8E8">
 			<pen lineWidth="0.0"/>
 		</element>
-		<element kind="staticText" uuid="160c7245-98ba-4d67-9167-4e7b3e5fb406" x="-20" y="12" width="160" height="40" forecolor="#5DA7F0" fontSize="25.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+		<element kind="staticText" uuid="160c7245-98ba-4d67-9167-4e7b3e5fb406" x="-20" y="0" width="160" height="40" forecolor="#5DA7F0" fontSize="25.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
 			<text><![CDATA[EMAIL]]></text>
 		</element>
 		<property name="com.jaspersoft.studio.unit.height" value="px"/>

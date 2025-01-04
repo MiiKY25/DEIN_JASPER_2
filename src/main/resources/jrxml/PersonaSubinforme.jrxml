@@ -29,6 +29,7 @@ FROM agenda.persona p
 			<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
 		</field>
 	</dataset>
+	<parameter name="Resource_PATH" class="java.lang.String"/>
 	<query language="sql"><![CDATA[SELECT p.dni, p.nombre, p.apellido1, p.apellido2
 FROM agenda.persona p
 
@@ -77,17 +78,17 @@ FROM agenda.persona p
 				<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 				<property name="com.jaspersoft.studio.unit.y" value="px"/>
 			</element>
-			<element kind="subreport" uuid="7dbcb393-0ca6-40d3-bacf-24b4a9af9ee2" x="-20" y="40" width="285" height="120">
+			<element kind="subreport" uuid="7dbcb393-0ca6-40d3-bacf-24b4a9af9ee2" x="20" y="40" width="245" height="120">
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<expression><![CDATA["Email.jasper"]]></expression>
+				<expression><![CDATA[$P{Resource_PATH} + "Email.jasper"]]></expression>
 				<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				<parameter name="dni">
 					<expression><![CDATA[$F{dni}]]></expression>
 				</parameter>
 			</element>
-			<element kind="subreport" uuid="2699d5d1-0480-4b82-ab47-565edb965e15" x="290" y="40" width="285" height="120">
+			<element kind="subreport" uuid="2699d5d1-0480-4b82-ab47-565edb965e15" x="290" y="40" width="240" height="120">
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<expression><![CDATA["Telefono.jasper"]]></expression>
+				<expression><![CDATA[$P{Resource_PATH} + "Telefono.jasper"]]></expression>
 				<parameter name="dni">
 					<expression><![CDATA[$F{dni}]]></expression>
 				</parameter>

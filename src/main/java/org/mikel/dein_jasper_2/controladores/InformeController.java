@@ -137,7 +137,7 @@ public class InformeController {
             db = new ConexionBBDD();
 
             // Cargar el archivo Jasper del informe principal
-            InputStream reportStream = db.getClass().getResourceAsStream("/jasper/PersonaSubinforme.jasper");
+            InputStream reportStream = getClass().getResourceAsStream("/jasper/PersonaSubinforme.jasper");
 
             // Verificar si el archivo fue encontrado
             if (reportStream == null) {
@@ -151,22 +151,25 @@ public class InformeController {
             // Parámetros del informe
             Map<String, Object> parameters = new HashMap<>();
 
-            // Aquí se agrega el parámetro para el subinforme de email
-            InputStream emailSubreportStream = db.getClass().getResourceAsStream("/jasper/Email.jasper");
+            // Configurar el parámetro Resource_PATH para subinformes
+            String resourcePath = getClass().getResource("/jasper/").toString();
+            parameters.put("Resource_PATH", resourcePath);
+
+            // Verificar y cargar el subinforme de email
+            InputStream emailSubreportStream = getClass().getResourceAsStream("/jasper/Email.jasper");
             if (emailSubreportStream == null) {
                 System.out.println("Subinforme de Email NO encontrado");
                 return;
             }
-            parameters.put("EmailSubreport", emailSubreportStream);
+            parameters.put("EmailSubreport", resourcePath + "Email.jasper");
 
-
-            InputStream telefonoSubreportStream = db.getClass().getResourceAsStream("/jasper/Telefono.jasper");
+            // Verificar y cargar el subinforme de teléfono
+            InputStream telefonoSubreportStream = getClass().getResourceAsStream("/jasper/Telefono.jasper");
             if (telefonoSubreportStream == null) {
                 System.out.println("Subinforme de Teléfono NO encontrado");
                 return;
             }
-            parameters.put("TelefonoSubreport", telefonoSubreportStream);
-
+            parameters.put("TelefonoSubreport", resourcePath + "Telefono.jasper");
 
             // Llenar el informe con datos
             JasperPrint jprint = JasperFillManager.fillReport(report, parameters, db.getConnection());

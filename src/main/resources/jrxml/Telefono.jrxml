@@ -13,12 +13,14 @@ WHERE t.dni = $P{dni}
 		<property name="com.jaspersoft.studio.field.tree.path" value="telefono"/>
 	</field>
 	<background splitType="Stretch"/>
-	<columnHeader height="52" splitType="Stretch">
-		<element kind="rectangle" uuid="d66ed54a-4f91-43d6-b42a-4e5263b60aec" x="-20" y="0" width="200" height="52" backcolor="#E8E8E8">
+	<columnHeader height="40" splitType="Stretch">
+		<element kind="rectangle" uuid="d66ed54a-4f91-43d6-b42a-4e5263b60aec" x="-20" y="0" width="200" height="40" backcolor="#E8E8E8">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<pen lineWidth="0.0"/>
 		</element>
-		<element kind="staticText" uuid="8ce3ef28-f640-4950-837b-ed7ec6573f00" x="-20" y="0" width="200" height="52" forecolor="#5DA7F0" fontSize="25.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+		<element kind="staticText" uuid="8ce3ef28-f640-4950-837b-ed7ec6573f00" x="-20" y="0" width="200" height="40" forecolor="#5DA7F0" fontSize="25.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
 			<text><![CDATA[TELEFONOS]]></text>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 		</element>
 		<property name="com.jaspersoft.studio.unit.height" value="px"/>
 	</columnHeader>
