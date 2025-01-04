@@ -18,20 +18,42 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Controlador para manejar las acciones del informe en la aplicación.
+ * Permite mostrar diferentes tipos de informes Jasper según la opción seleccionada.
+ */
 public class InformeController {
 
+    /**
+     * Grupo de botones de opción (RadioButtons) que se utilizan para seleccionar el tipo de informe.
+     */
     @FXML
     private ToggleGroup radioInforme;
 
+    /**
+     * Botón de opción (RadioButton) para seleccionar el informe de persona.
+     */
     @FXML
     private RadioButton rdPersona;
 
+    /**
+     * Botón de opción (RadioButton) para seleccionar el informe de persona con cálculo.
+     */
     @FXML
     private RadioButton rdPersonaCalculo;
 
+    /**
+     * Botón de opción (RadioButton) para seleccionar el informe de persona con subinforme.
+     */
     @FXML
     private RadioButton rdPersonaSubinforme;
 
+    /**
+     * Acción que se ejecuta cuando el usuario acepta la selección.
+     * Abre el informe correspondiente según el RadioButton seleccionado.
+     *
+     * @param event el evento generado por la acción.
+     */
     @FXML
     void accionAceptar(ActionEvent event) {
         // Obtiene el RadioButton seleccionado
@@ -46,12 +68,22 @@ public class InformeController {
         }
     }
 
+    /**
+     * Acción que se ejecuta cuando el usuario cancela la selección.
+     * Cierra la ventana del informe.
+     *
+     * @param event el evento generado por la acción.
+     */
     @FXML
     void accionCancelar(ActionEvent event) {
         Stage stage = (Stage) rdPersona.getScene().getWindow();
         stage.close();
     }
 
+    /**
+     * Metodo que abre el informe de persona.
+     * Carga el archivo Jasper correspondiente y lo visualiza.
+     */
     public void abrirInformePersona(){
         ConexionBBDD db;
         try {
@@ -89,6 +121,10 @@ public class InformeController {
         }
     }
 
+    /**
+     * Metodo que abre el informe de persona con cálculos.
+     * Carga el archivo Jasper correspondiente y lo visualiza.
+     */
     public void abrirInformePersonaCalculo(){
         ConexionBBDD db;
         try {
@@ -130,6 +166,10 @@ public class InformeController {
         }
     }
 
+    /**
+     * Metodo que abre el informe de persona con subinformes.
+     * Carga el archivo Jasper principal y los subinformes, y luego los visualiza.
+     */
     public void abrirInformePersonaSubinforme() {
         ConexionBBDD db;
         try {
