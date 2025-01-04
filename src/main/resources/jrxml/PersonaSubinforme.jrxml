@@ -1,0 +1,108 @@
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
+<jasperReport name="PersonaSubinforme" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="68a1ae23-ff06-4238-bb6a-fda5b3e1be2e">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Conexion MariaDB"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<dataset name="PrincipalDataset" uuid="611688bb-ec14-4367-ba4a-1ac46527b439">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Conexion MariaDB"/>
+		<query language="SQL"><![CDATA[SELECT p.dni, p.nombre, p.apellido1, p.apellido2
+FROM agenda.persona p
+]]></query>
+		<field name="dni" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="dni"/>
+			<property name="com.jaspersoft.studio.field.label" value="dni"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+		</field>
+		<field name="nombre" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+			<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+		</field>
+		<field name="apellido1" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="apellido1"/>
+			<property name="com.jaspersoft.studio.field.label" value="apellido1"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+		</field>
+		<field name="apellido2" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="apellido2"/>
+			<property name="com.jaspersoft.studio.field.label" value="apellido2"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+		</field>
+	</dataset>
+	<query language="sql"><![CDATA[SELECT p.dni, p.nombre, p.apellido1, p.apellido2
+FROM agenda.persona p
+
+
+
+
+
+
+]]></query>
+	<field name="dni" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dni"/>
+		<property name="com.jaspersoft.studio.field.label" value="dni"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+	</field>
+	<field name="apellido1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="apellido1"/>
+		<property name="com.jaspersoft.studio.field.label" value="apellido1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+	</field>
+	<field name="apellido2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="apellido2"/>
+		<property name="com.jaspersoft.studio.field.label" value="apellido2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+	</field>
+	<background splitType="Stretch"/>
+	<title height="73" splitType="Stretch">
+		<element kind="rectangle" uuid="80400e98-bf42-47f0-9d87-599efb6cc653" x="-20" y="-20" width="595" height="93" backcolor="#42B3F5">
+			<pen lineWidth="0.0"/>
+		</element>
+		<element kind="staticText" uuid="fe7cf541-f252-4f43-b3e3-258586308b5e" x="20" y="0" width="320" height="60" forecolor="#FFFFFF" fontSize="42.0" bold="true" vTextAlign="Middle">
+			<text><![CDATA[AGENDA]]></text>
+		</element>
+	</title>
+	<detail>
+		<band height="245" splitType="Stretch">
+			<element kind="textField" uuid="97b2e1bb-0395-4f6a-8ecd-e7803f3892b3" x="20" y="10" width="535" height="20" fontSize="14.0">
+				<expression><![CDATA[$F{nombre}+ " " +$F{apellido1}+ " " +$F{apellido2}]]></expression>
+			</element>
+			<element kind="line" uuid="d3139a10-6c71-46f9-be19-660234093036" x="20" y="33" width="535" height="1">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			</element>
+			<element kind="subreport" uuid="7dbcb393-0ca6-40d3-bacf-24b4a9af9ee2" x="-20" y="40" width="285" height="120">
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<expression><![CDATA["Email.jasper"]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<parameter name="dni">
+					<expression><![CDATA[$F{dni}]]></expression>
+				</parameter>
+			</element>
+			<element kind="subreport" uuid="2699d5d1-0480-4b82-ab47-565edb965e15" x="290" y="40" width="285" height="120">
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<expression><![CDATA["Telefono.jasper"]]></expression>
+				<parameter name="dni">
+					<expression><![CDATA[$F{dni}]]></expression>
+				</parameter>
+			</element>
+		</band>
+	</detail>
+	<pageFooter height="34" splitType="Stretch">
+		<element kind="textField" uuid="5e03608e-5f9f-4436-b95d-f0120b1166c0" x="20" y="10" width="190" height="20">
+			<expression><![CDATA[new java.text.SimpleDateFormat("EEEE dd MMMM yyyy", new java.util.Locale("es", "ES")).format(new java.util.Date())]]></expression>
+		</element>
+		<element kind="textField" uuid="47b5a1fb-9523-40c4-85f2-5a5e724f038a" x="370" y="10" width="100" height="20" hTextAlign="Right">
+			<expression><![CDATA[$V{PAGE_NUMBER}]]></expression>
+		</element>
+		<element kind="textField" uuid="c4e2e6aa-48b5-4ead-bc45-37a44cc6a62d" x="470" y="10" width="100" height="20" markup="styled" evaluationTime="Report" hTextAlign="Left">
+			<expression><![CDATA["/" + $V{PAGE_NUMBER}]]></expression>
+		</element>
+	</pageFooter>
+</jasperReport>

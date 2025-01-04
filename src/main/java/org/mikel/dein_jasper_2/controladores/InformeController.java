@@ -130,8 +130,58 @@ public class InformeController {
         }
     }
 
-    public void abrirInformePersonaSubinforme(){
+    public void abrirInformePersonaSubinforme() {
+        ConexionBBDD db;
+        try {
+            // Crear una nueva conexión a la base de datos
+            db = new ConexionBBDD();
 
+            // Cargar el archivo Jasper del informe principal
+            InputStream reportStream = db.getClass().getResourceAsStream("/jasper/PersonaSubinforme.jasper");
+
+            // Verificar si el archivo fue encontrado
+            if (reportStream == null) {
+                System.out.println("Archivo principal NO encontrado");
+                return;
+            }
+
+            // Cargar el informe Jasper principal
+            JasperReport report = (JasperReport) JRLoader.loadObject(reportStream);
+
+            // Parámetros del informe
+            Map<String, Object> parameters = new HashMap<>();
+
+            // Aquí se agrega el parámetro para el subinforme de email
+            InputStream emailSubreportStream = db.getClass().getResourceAsStream("/jasper/Email.jasper");
+            if (emailSubreportStream == null) {
+                System.out.println("Subinforme de Email NO encontrado");
+                return;
+            }
+            parameters.put("EmailSubreport", emailSubreportStream);
+
+
+            InputStream telefonoSubreportStream = db.getClass().getResourceAsStream("/jasper/Telefono.jasper");
+            if (telefonoSubreportStream == null) {
+                System.out.println("Subinforme de Teléfono NO encontrado");
+                return;
+            }
+            parameters.put("TelefonoSubreport", telefonoSubreportStream);
+
+
+            // Llenar el informe con datos
+            JasperPrint jprint = JasperFillManager.fillReport(report, parameters, db.getConnection());
+
+            // Mostrar el informe
+            JasperViewer viewer = new JasperViewer(jprint, false);
+            viewer.setVisible(true);
+
+        } catch (SQLException e) {
+            System.err.println("Error de conexión a la base de datos:");
+            e.printStackTrace();
+        } catch (JRException e) {
+            System.err.println("Error al procesar el informe Jasper:");
+            e.printStackTrace();
+        }
     }
 
 }
