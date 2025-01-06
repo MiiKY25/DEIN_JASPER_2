@@ -242,6 +242,11 @@ public class InformeController {
         alert.showAndWait();
     }
 
+    /**
+     * Inicializa el controlador, realizando la conexión a la base de datos.
+     * Si la conexión a la base de datos falla, muestra un mensaje de error
+     * y cierra la aplicación.
+     */
     public void initialize() {
         // Controlar acceso a la base de datos
         try {
