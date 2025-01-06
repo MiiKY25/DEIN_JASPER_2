@@ -1,7 +1,9 @@
 package org.mikel.dein_jasper_2.controladores;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
@@ -219,11 +221,34 @@ public class InformeController {
             viewer.setVisible(true);
 
         } catch (SQLException e) {
-            System.err.println("Error de conexión a la base de datos:");
+            mostrarError("No se ha podido establecer conexion con la Base de Datos");
             e.printStackTrace();
         } catch (JRException e) {
-            System.err.println("Error al procesar el informe Jasper:");
+            mostrarError("Error al procesar el informe Jasper");
             e.printStackTrace();
+        }
+    }
+
+    /**
+     * Metodo que muestra un mensaje de error en una ventana emergente.
+     *
+     * @param error El mensaje de error que se mostrará en la ventana emergente.
+     */
+    void mostrarError(String error) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(error);
+        alert.showAndWait();
+    }
+
+    public void initialize() {
+        // Controlar acceso a la base de datos
+        try {
+            new ConexionBBDD();
+        } catch (SQLException e) {
+            mostrarError("No se ha podido establecer conexion con la Base de Datos");
+            Platform.exit(); // Cierra la aplicación
         }
     }
 
